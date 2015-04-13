@@ -21,8 +21,14 @@ int playerSize =50;
 int blueCIR = 2;
 BlueCir[] BlueCirArr= new BlueCir[blueCIR];
 
-int platforms=2;
+int platforms=3;
 Platforms[] Platform = new Platforms[platforms];
+
+int platforms1=3;
+Platforms[] Platform1 = new Platforms[platforms1];
+
+float platX1 =random(width, 2*width+60);
+float platY1= random(height);
 
 int bSpeeds =10;
 
@@ -42,6 +48,13 @@ void setup()
   for (int j = 0; j < Platform.length; j++) 
   {
     Platform[j] = new Platforms(); // Create each object
+    p1 = new Platforms();
+  }
+  
+  //BLUE CIRCLE FROM BOTTOM
+  for (int j = 0; j < Platform1.length; j++) 
+  {
+    Platform1[j] = new Platforms(); // Create each object
     p1 = new Platforms();
   }
   
@@ -81,6 +94,10 @@ void draw()
     Platform[j].falldown();
   }
   
+   for (int j = 0; j < Platform1.length; j++) 
+  {
+    Platform[j].fallacross();
+  }
   
 }
 

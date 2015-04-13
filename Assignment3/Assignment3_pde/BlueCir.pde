@@ -7,7 +7,7 @@ class BlueCir
   // FALLING VERTICAL
   void falldown() 
   {  
-    BlueCiry-= 5;
+    BlueCiry-= 3;
     stroke(0, 0, 255);
     ellipse(BlueCirx, BlueCiry, 20, 20);
     fill(0);
