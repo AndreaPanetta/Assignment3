@@ -44,6 +44,15 @@ class Player
         );
   }
   
+  boolean collisionCheck2(BlueCir b1)
+  {
+    if (pos.x - playerSize < b1.BlueCirx + 20 && pos.x + playerSize > b1.BlueCirx && pos.y - playerSize < b1.BlueCiry + 20 && pos.y + playerSize > b1.BlueCiry)
+    {
+      return true;
+    }
+    return false;
+  }
+  
   void update()
   {
     if (checkKey(up))
