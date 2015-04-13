@@ -1,69 +1,84 @@
-PImage backdrop;
-final int Width = 30;
-final int Height = 39;
-int[][] level = new int[Height][Width];
+/*
+    DIT OOP Assignment 2 Starter Code
+    =================================
+    
+    Loads player properties from an xml file
+    See: https://github.com/skooter500/DT228-OOP 
+*/
 
-float z =1;
-float speed=1;
-
-Player p1;
-
-//booleans for the keyPress/keyRelease functions
-boolean upPress = false;
-boolean leftPress = false;
-boolean rightPress = false;
+ArrayList<Player> players = new ArrayList<Player>();
+boolean[] keys = new boolean[526];
 
 void setup()
 {
-  size(500,650);
-  
-  //allows the player to fall to the middle of the screen at beginning
-  p1 = new Player(Width*8,Height*8);
-  backdrop = loadImage("background.jpg");
+  size(500, 500);
+  setUpPlayerControllers();
 }
 
 void draw()
-{ 
-  background(255);
+{
   
-  p1.update();
-  z += speed;
-  z %= height;
-  image(backdrop,0,int(z));
-  image(backdrop.get(0, backdrop.height - int(z), backdrop.width, int(z)),0, 0);
+  background(0);
+  for(Player player:players)
+  {
+    player.update();
+    player.display();
+  }
+}
+
+void keyPressed()
+{
+  keys[keyCode] = true;
+}
+
+void keyReleased()
+{
+  keys[keyCode] = false;
+}
+
+boolean checkKey(char theKey)
+{
+  return keys[Character.toUpperCase(theKey)];
+}
+
+char buttonNameToKey(XML xml, String buttonName)
+{
+  String value =  xml.getChild(buttonName).getContent();
+  if ("LEFT".equalsIgnoreCase(value))
+  {
+    return LEFT;
+  }
+  if ("RIGHT".equalsIgnoreCase(value))
+  {
+    return RIGHT;
+  }
+  if ("UP".equalsIgnoreCase(value))
+  {
+    return UP;
+  }
+  if ("DOWN".equalsIgnoreCase(value))
+  {
+    return DOWN;
+  }
+  //.. Others to follow
+  return value.charAt(0);  
+}
+
+void setUpPlayerControllers()
+{
+  XML xml = loadXML("arcade.xml");
+  XML[] children = xml.getChildren("player");
+  int gap = width / (children.length + 1);
   
-  p1.show();
-}
 
-
-boolean place_free(int xx,int yy) 
-{
-//checks if a given point (xx,yy) is free (no block at that point) or not
-  yy = int(floor(yy/16.0));
-  xx = int(floor(xx/16.0));
-  if ( xx > -1 && xx < level[0].length && yy > -1 && yy < level.length ) {
-    if ( level[yy][xx] == 0 ) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void keyPressed() 
-{
-  switch(keyCode) 
-  {
-    case RIGHT: rightPress = true; break;
-    case LEFT: leftPress = true; break;
-    case UP: upPress = true; break;
-  }
-}
-void keyReleased() 
-{
-  switch(keyCode) 
-  {
-    case RIGHT: rightPress = false; break;
-    case LEFT: leftPress = false; break;
-    case UP: upPress = false; break;
-  }
+    XML playerXML = children[0];
+    Player p = new Player(
+            0
+            , color(random(0, 255), random(0, 255), random(0, 255))
+            , playerXML);
+    int x = (1) * gap;
+    p.pos.x = x;
+    p.pos.y = 300;
+   players.add(p);         
+  
 }
