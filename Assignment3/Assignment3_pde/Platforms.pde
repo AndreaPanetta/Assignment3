@@ -1,23 +1,21 @@
 class Platforms
 {
-  float  platX = -random(width);
-  float  platY = -random(height, 2*height);
+  float  platX = 0;
+  float  platY = 0;
 
-  int speed=3;
+  int speed=1;
   
   // FALLING VERTICAL
   void falldown() 
   {  
-    platY-= 1;
-    stroke(0, 0, 255);
+    platY=platY+speed;
+    rect(platX,platY,50,20);
+    fill(255,0,0);
+    if(platY>height)
+   {
+     platX = random(600);
+     platY= random(-200);
+   }// END OF IF
     
-    rect(platX, platY, 60, 20);
-    fill(255);
-
-    if (platY<0)
-    {
-      platY = height-bSpeeds;
-      platX = random(width);
-    }
   }// END OF FALL
 }
