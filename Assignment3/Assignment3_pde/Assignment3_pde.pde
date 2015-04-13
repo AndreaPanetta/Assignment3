@@ -7,6 +7,7 @@
 */
 
 BlueCir bc1;
+Platforms p1;
 
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
@@ -20,6 +21,9 @@ int playerSize =50;
 int blueCIR = 2;
 BlueCir[] BlueCirArr= new BlueCir[blueCIR];
 
+int platforms=2;
+Platforms[] Platform = new Platforms[platforms];
+
 int bSpeeds =10;
 
 void setup()
@@ -32,6 +36,13 @@ void setup()
   {
     BlueCirArr[j] = new BlueCir(); // Create each object
     bc1 = new BlueCir();
+  }
+  
+  //BLUE CIRCLE FROM BOTTOM
+  for (int j = 0; j < Platform.length; j++) 
+  {
+    Platform[j] = new Platforms(); // Create each object
+    p1 = new Platforms();
   }
   
   
@@ -63,6 +74,11 @@ void draw()
   for (int j = 0; j < BlueCirArr.length; j++) 
   {
     BlueCirArr[j].falldown();
+  }
+  
+  for (int j = 0; j < Platform.length; j++) 
+  {
+    Platform[j].falldown();
   }
   
   
@@ -116,7 +132,7 @@ void setUpPlayerControllers()
     XML playerXML = children[0];
     Player p = new Player(
             0
-            , color(random(0, 255), random(0, 255), random(0, 255))
+            , color(255)
             , playerXML);
     int x = (1) * gap;
     p.pos.x = x;
