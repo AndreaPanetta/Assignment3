@@ -95,6 +95,20 @@ void draw()
   
 }
 
+boolean place_free(float xx,float yy) {
+//checks if a given point (xx,yy) is free or not
+  yy = int(floor(yy/16.0));
+  xx = int(floor(xx/16.0));
+  if ( xx > -1 && xx < 50 && yy > -1 && yy < 20) 
+  {
+    if ( 50*20 == 0 ) 
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 void keyPressed()
 {
   keys[keyCode] = true;
