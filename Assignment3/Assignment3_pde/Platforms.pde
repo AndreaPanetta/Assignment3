@@ -24,7 +24,7 @@ class Platforms
   {     
     platX1 -= 1;
     stroke(0, 0, 255);
-    rect(platX1, platX1, 70, 20);
+    rect(platX1, platY1, 70, 20);
     fill(0);
 
     if (platX1<0)

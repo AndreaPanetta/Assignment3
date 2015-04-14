@@ -21,10 +21,10 @@ int playerSize =50;
 int blueCIR = 2;
 BlueCir[] BlueCirArr= new BlueCir[blueCIR];
 
-int platforms=3;
+int platforms=6;
 Platforms[] Platform = new Platforms[platforms];
 
-int platforms1=3;
+int platforms1=6;
 Platforms[] Platform1 = new Platforms[platforms1];
 
 float platX1 =random(width, 2*width+60);
