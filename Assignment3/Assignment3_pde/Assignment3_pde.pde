@@ -1,10 +1,4 @@
-/*
-    DIT OOP Assignment 2 Starter Code
-    =================================
-    
-    Loads player properties from an xml file
-    See: https://github.com/skooter500/DT228-OOP 
-*/
+
 
 BlueCir bc1;
 Platforms p1;
@@ -153,7 +147,7 @@ void setUpPlayerControllers()
             , playerXML);
     int x = (1) * gap;
     p.pos.x = x;
-    p.pos.y = 300;
+    p.pos.y = 460;
    players.add(p);         
   
 }
