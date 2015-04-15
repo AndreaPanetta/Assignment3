@@ -65,16 +65,6 @@ class Player
     return false;
   }
   
-  //CHECKING COLLISION OF PLAYER WITH VERTICAL SQAURES
-  boolean collisionCheck2(Platforms p1)
-  {
-    if (pos.x - playerSize < platX + 20 && pos.x + playerSize > platX && pos.y - playerSize < platY + 20 && pos.y + playerSize > platY)
-    {
-      return true;
-    }
-    return false;
-  }
-  
   
   void update()
   {
